@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="import" href="../bower_components/paper-input/paper-input.html">
+	<link rel="import" href="../bower_components/paper-button/paper-button.html">
+	<link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+	<link rel="import" href="../bower_components/paper-listbox/paper-listbox.html">
+	<link rel="import" href="../bower_components/paper-item/paper-item.html">
+	<script src="../bower_components/webcomponentsjs/webcomponents.js"></script>
+</head>
+<body>
+<paper-input label="Lower Third Top" id="lower-third-top" always-float-label type="text"></paper-input>
+<paper-input label="Lower Third Bottom" id="lower-third-bottom" always-float-label type="text"></paper-input>
+<paper-dropdown-menu label="Lower Third Width" id="lower-third-width">
+	<paper-listbox slot="dropdown-content" class="dropdown-content">
+		<paper-item>Half</paper-item>
+		<paper-item>Three Quarters</paper-item>
+		<paper-item >Full</paper-item>
+	</paper-listbox>
+</paper-dropdown-menu>
+<div id="lowerThirdButtons">
+	<paper-button id="updateLowerThird" class="nodecg-success" raised>Update</paper-button>
+	<paper-button id="showLowerThird" class="nodecg-success" raised>Show</paper-button>
+	<paper-button id="hideLowerThird" class="nodecg-danger" raised>Hide</paper-button>
+</div>
+<script src="lower-third.js"></script>
+</body>
+</html>

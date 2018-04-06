@@ -1,0 +1,19 @@
+{
+  "questionPacks": [
+    {
+      "name": "Round 1",
+      "questions": [
+        {
+          "question": "What is a meme?",
+          "answers": [
+            "Dank",
+            "Sweet",
+            "Spicy",
+            "Nice"
+          ],
+          "correctAnswer": 3
+        }
+      ]
+    }
+  ]
+}

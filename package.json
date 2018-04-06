@@ -1,0 +1,69 @@
+{
+  "name": "con-artists",
+  "version": "0.0.0",
+  "description": "Con Artists NodeCG Bundle",
+  "homepage": "",
+  "author": {
+    "name": "Stuart",
+    "email": "rushmead@gmail.com",
+    "url": ""
+  },
+  "files": [
+    "dashboard",
+    "graphics",
+    "extension.js",
+    "extension"
+  ],
+  "keywords": [
+    "",
+    "nodecg-bundle"
+  ],
+  "nodecg": {
+    "compatibleRange": "~0.9.10",
+    "dashboardPanels": [
+      {
+        "name": "con-artists",
+        "title": "Con Artists",
+        "width": 2,
+        "file": "con-artists.html",
+        "headerColor": "#9f9bbd"
+      },
+      {
+        "name": "lower-third",
+        "title": "Lower Third",
+        "width": 4,
+        "file": "lower_third.html",
+        "headerColor": "#9f9bbd"
+      },
+      {
+        "name": "questions",
+        "title": "Questions System",
+        "width": 4,
+        "file": "questions/question.html",
+        "headerColor": "#9f9bbd"
+      }
+    ],
+    "graphics": [
+      {
+        "file": "index.html",
+        "width": 1280,
+        "height": 720,
+        "singleInstance": true
+      },
+      {
+        "file": "lower_third.html",
+        "width": 1920,
+        "height": 250,
+        "singleInstance": false
+      },
+      {
+        "file": "question.html",
+        "width": 1920,
+        "height": 250,
+        "singleInstance": false
+      }
+    ]
+  },
+  "repository": "Rushmead/con-artists",
+  "license": "Apache-2.0"
+}
