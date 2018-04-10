@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+	<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+	<link rel="import" href="../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+	<link rel="import" href="../../bower_components/paper-listbox/paper-listbox.html">
+	<link rel="import" href="../../bower_components/paper-item/paper-item.html">
+	<script src="../../bower_components/webcomponentsjs/webcomponents.js"></script>
+	<style>
+		.green {
+			background-color: #2ecc71;
+		}
+		.red {
+			background-color: #c0392b;
+		}
+		.paddedBottom {
+			padding-bottom: 20px;
+		}
+	</style>
+</head>
+<body>
+<dom-module id="team-one">
+	<template>
+		<paper-input label="{{teamName}} Score" id="teamOneScore" always-float-label type="number" disabled width="50%"></paper-input>
+		<paper-button class="green" raised on-tap="addScore">+1</paper-button>
+		<paper-button class="red" raised on-tap="takeScore">-1</paper-button>
+	</template>
+	<script>
+		window.addEventListener('WebComponentsReady', function (e) {
+			Polymer({
+				is: 'team-one',
+				ready: function () {
+					const self = this;
+					self.score = nodecg.Replicant("teamOneScore");
+					nodecg.Replicant("teamOneName").on('change', (newVal) => {
+						self.teamName = newVal;
+					});
+					self.score.on("change", (newVal) => {
+						$('#teamOneScore').val(newVal);
+					})
+				},
+				addScore: function () {
+					this.score.value += 1;
+				},
+				takeScore: function () {
+					this.score.value -= 1;
+				}
+			});
+		});
+	</script>
+</dom-module>
+<team-one></team-one>
+<dom-module id="team-two">
+	<template>
+		<paper-input label="{{teamName}} Score" id="teamTwoScore" always-float-label type="number" disabled width="50%"></paper-input>
+		<paper-button class="green" raised on-tap="addScore">+1</paper-button>
+		<paper-button class="red" raised on-tap="takeScore">-1</paper-button>
+	</template>
+	<script>
+		window.addEventListener('WebComponentsReady', function (e) {
+			Polymer({
+				is: 'team-two',
+				ready: function () {
+					const self = this;
+					self.score = nodecg.Replicant("teamTwoScore");
+					nodecg.Replicant("teamTwoName").on('change', (newVal) => {
+						self.teamName = newVal;
+					});
+					self.score.on("change", (newVal) => {
+						$('#teamTwoScore').val(newVal);
+					})
+				},
+				addScore: function () {
+					this.score.value += 1;
+				},
+				takeScore: function () {
+					this.score.value -= 1;
+				}
+			});
+		});
+	</script>
+</dom-module>
+<team-two></team-two>
+<div class="paddedBottom">
+	<paper-dropdown-menu label="Scoreboard Position" id="scoreboard-position">
+		<paper-listbox slot="dropdown-content" class="dropdown-content" id="scoreboard-listbox">
+			<paper-item>sides</paper-item>
+			<paper-item>bottom</paper-item>
+		</paper-listbox>
+	</paper-dropdown-menu>
+</div>
+<div id="buttons">
+	<paper-button id="show" class="nodecg-success" raised>Show</paper-button>
+	<paper-button id="hide" class="nodecg-danger" raised>Hide</paper-button>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" type="text/javascript"></script>
+<script src="scoreboard.js"></script>
+</body>
+</html>

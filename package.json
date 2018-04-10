@@ -22,10 +22,10 @@
     "compatibleRange": "~0.9.10",
     "dashboardPanels": [
       {
-        "name": "con-artists",
-        "title": "Con Artists",
-        "width": 2,
-        "file": "con-artists.html",
+        "name": "scoreboard",
+        "title": "Scoreboard",
+        "width": 4,
+        "file": "scoreboard/scoreboard.html",
         "headerColor": "#9f9bbd"
       },
       {
@@ -41,15 +41,24 @@
         "width": 4,
         "file": "questions/question.html",
         "headerColor": "#9f9bbd"
+      },
+      {
+        "name": "messaging",
+        "title": "Messaging",
+        "width": 4,
+        "file": "messaging/messaging.html",
+        "headerColor": "#9f9bbd"
+      },
+      {
+        "name": "settings",
+        "title": "Settings",
+        "width": 4,
+        "file": "settings/settings.html",
+        "headerColor": "#9f9bbd",
+        "workspace": "Settings"
       }
     ],
     "graphics": [
-      {
-        "file": "index.html",
-        "width": 1280,
-        "height": 720,
-        "singleInstance": true
-      },
       {
         "file": "lower_third.html",
         "width": 1920,
@@ -61,6 +70,47 @@
         "width": 1920,
         "height": 250,
         "singleInstance": false
+      },
+      {
+        "file": "scoreboard.html",
+        "width": 1920,
+        "height": 1080,
+        "singleInstance": false
+      },
+      {
+        "file": "feedback.html",
+        "width": 1920,
+        "height": 1080,
+        "singleInstance": false
+      },
+      {
+        "file": "buzzer.html",
+        "width": 1920,
+        "height": 1080,
+        "singleInstance": false
+      }
+    ],
+    "soundCues": [
+      {
+        "name": "correct",
+        "defaultFile": "sounds/correct.ogg",
+        "assignable": false
+      },
+      {
+        "name": "incorrect",
+        "defaultFile": "sounds/incorrect.ogg",
+        "assignable": false
+      },
+      {
+        "name": "lockin",
+        "defaultFile": "sounds/lockin.ogg",
+        "assignable": false
+      },
+      {
+        "name": "teamOneBuzz"
+      },
+      {
+        "name": "teamTwoBuzz"
       }
     ]
   },

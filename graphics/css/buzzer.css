@@ -1,0 +1,58 @@
+html {
+	height: 100%;
+}
+body{
+	overflow: hidden;
+	margin: 0;
+	font-family: 'lato';
+	height: 100%;
+}
+.container{
+	width: 1920px;
+	height: 100%;
+}
+.hidden {
+	display: none;
+}
+.buttons  {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+#teamOneBuzzer {
+	background-color: red;
+	border-color: red;
+	border-radius: 50%;
+	color: #fff;
+	font-size: xx-large;
+	width: 500px;
+	height: 500px;
+}
+#teamOneBuzzer:active {
+	transform: scale(0.98);
+	-webkit-transform: scale(0.98);
+	-ms-transform: scale(0.98);
+}
+#teamTwoBuzzer:active {
+	transform: scale(0.98);
+	-webkit-transform: scale(0.98);
+	-ms-transform: scale(0.98);
+}
+#teamOneBuzzer[disabled] {
+	background-color: darkred;
+}
+#teamTwoBuzzer[disabled] {
+	background-color: darkblue;
+}
+#teamTwoBuzzer {
+	background-color: blue;
+	border-color: blue;
+	border-radius: 50%;
+	color: #fff;
+	font-size: xx-large;
+	width: 500px;
+	height: 500px;
+}
+
+

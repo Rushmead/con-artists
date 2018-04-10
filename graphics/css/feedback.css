@@ -5,43 +5,35 @@ body{
 }
 .container{
 	width: 1920px;
-	height: 250px;
+	height: 1080px;
 }
-.lower-third-container{
-	width: 0px;
-	height: 250px;
-	top: 0;
-	margin: 0 auto;
-	display:block;
-	margin-top: 0px;
+.leftSide {
+	left: 0;
+	width: 50%;
+	position:absolute;
 }
-.lower-third{
-	height: 184px;
-	background: #ecf0f1;
-	border: #000 20px;
-	position: relative;
-	top: 50%;
-	transform: translateY(-50%);
+.rightSide {
+	right: 0;
+	width: 50%;
+	position:absolute;
 }
-.lower-third-top{
-	padding-top: 5px;
-	font-size: 2em;
-	color: #000;
-	width: 100%;
-	opacity: 0;
-}
-.lower-third-top > p {
-	color: #000;
+.teamOne {
+	height: 100px;
+	width: 200px;
+	border: 2px #2c3e50 solid;
+	background-color: #2980b9;
+	font-size: 2vh;
+	color: #fff;
 	text-align:center;
 }
-.lower-third-bottom{
-	width: 1920px;
-	font-size: 2.5em;
-	color: #000;
-	width: 100%;
-	position: absolute;
-	bottom: 0;
-	opacity: 0;
+.teamTwo {
+	height: 100px;
+	width: 200px;
+	border: 2px #2c3e50 solid;
+	background-color: #c0392b;
+	font-size: 2vh;
+	color: #fff;
+	text-align:center;
 }
 .answers {
 	list-style-type: none;

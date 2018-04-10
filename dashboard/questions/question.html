@@ -4,120 +4,132 @@
 	<meta charset="UTF-8">
 	<link rel="import" href="../../bower_components/paper-input/paper-input.html">
 	<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+	<link rel="import" href="../../bower_components/paper-button-group/paper-button-group.html">
 	<link rel="import" href="../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
 	<link rel="import" href="../../bower_components/paper-listbox/paper-listbox.html">
 	<link rel="import" href="../../bower_components/paper-item/paper-item.html">
 	<script src="../../bower_components/webcomponentsjs/webcomponents.js"></script>
-  <style>
-    .green {
-      background: green;
-    }
-    .grey  {
-      background: grey;
-    }
-  </style>
+	<style>
+		.green {
+			background: green;
+		}
+
+		.grey {
+			background: grey;
+		}
+	</style>
 </head>
 <body>
-  <dom-module name="packs-list">
+<dom-module id="packs-list">
 	<template>
-    <paper-dropdown-menu label="Question Pack" id="questions-pack">
-    	<paper-listbox slot="dropdown-content" class="dropdown-content">
-        <template is="dom-repeat" items="{{packs}}">
-  				<paper-item>{{item.name}}</paper-item>
-  			</template>
-    	</paper-listbox>
-    </paper-dropdown-menu>
+		<paper-dropdown-menu label="Question Pack" >
+			<paper-listbox slot="dropdown-content" class="dropdown-content" id="questions-pack">
+				<template is="dom-repeat" items="{{packs}}">
+					<paper-item>{{item.name}}</paper-item>
+				</template>
+			</paper-listbox>
+		</paper-dropdown-menu>
 	</template>
 	<script>
-	window.addEventListener('WebComponentsReady', function(e) {
-		Polymer({
-			is: 'packs-list',
-			ready: function() {
-        const questionPack = nodecg.Replicant("questionPack");
-        const questionPacks = nodecg.Replicant('questionPacks');
-        const currentQuestion = nodecg.Replicant("currentQuestion");
-				this.packs = [];
-        nodecg.Replicant("questionPacks").on('change', (newVal) => {
-          this.packs = newVal;
-        })
-        questionPack.on('change', (newVal) => {
-          $('#questions-pack').selectedItemLabel = newVal.name;
-        });
-        $('#questions-pack').on('selected-item-changed', (event) => {
-          console.log(event);
-          if(event.target.selectedItem !== ""){
-            var label = event.target.selectedItem.innerHTML.trim();
-            console.log(label);
-            console.log(questionPacks.value);
-            questionPacks.value.forEach((pack) => {
-              console.log(pack);
-              if(pack.name === label){
-                console.log(pack.questions)
-                questionPack.value = pack;
-              }
-            });
-            if(questionPack.value !== undefined){
-              currentQuestion.value = questionPack.value.questions[0];
-            }
-          }
-          });
-			}
+		window.addEventListener('WebComponentsReady', function (e) {
+			Polymer({
+				is: 'packs-list',
+				ready: function () {
+					const self = this;
+					const questionPack = nodecg.Replicant("questionPack");
+					const questionPacks = nodecg.Replicant('questionPacks');
+					const currentQuestion = nodecg.Replicant("currentQuestion");
+					self.packs = [];
+					nodecg.Replicant("questionPacks").on('change', (newVal) => {
+						self.packs = newVal;
+					})
+					questionPack.on('change', (newVal) => {
+						if(document.getElementById('questions-pack').selected === undefined)
+							document.getElementById('questions-pack').select(newVal.id);
+					});
+					$('#questions-pack').on('selected-item-changed', (event) => {
+						if (event.target.selectedItem !== undefined) {
+							let label = event.target.selectedItem.innerHTML.trim();
+							questionPacks.value.forEach((pack) => {
+								if (pack.name === label) {
+									console.log(pack.questions)
+									questionPack.value = pack;
+								}
+							});
+							if (questionPack.value !== undefined) {
+								currentQuestion.value = questionPack.value.questions[0];
+							}
+						}
+					});
+				}
+			});
 		});
-	});
 	</script>
 </dom-module>
 <paper-button id="reload-packs" class="nodecg-danger" raised>Reload</paper-button>
 <packs-list></packs-list>
-<dom-module name="current-question">
-  <template>
-    <p>
-      Question: {{question.question}}
-    </p>
-    <p>
-      Answers:
-        <template is="dom-repeat" items="{{question.answers}}">
-            <paper-button data-index$="{{item}}" class$="{{_getColor(item)}}" raised on-tap="selectAnswer" >{{item}}</paper-button>
-        </template>
-    </p>
-    <p>
-      Correct Answer: {{question.correctAnswer}}
-    </p>
-  </template>
-  <script>
-	window.addEventListener('WebComponentsReady', function(e) {
-		Polymer({
-			is: 'current-question',
-			ready: function() {
-        var self = this;
-				this.question = {question: "", answers: [], correctAnswer: 0};
-        nodecg.Replicant("currentQuestion").on('change', (newVal) => {
-          this.question = newVal;
-        })
-			},
-      selectAnswer: function(e){
-        if(this.selectedAnswer === e.target.dataset.index){
-          this.selectedAnswer = undefined;
-          e.target.classList.remove("green");
-        }else{
-          this.selectedAnswer = e.target.dataset.index;
-          e.target.classList.add("green");
-          nodecg.sendMessage("selectedAnswer", this.selectedAnswer)
-        }
-      },
-      _getColor: function(index){
-        console.log(index);
-        console.log(this.selectedAnswer);
-        return this.selectedAnswer && this.selectedAnswer === index ? "green" : "";
-      }
+<dom-module id="current-question">
+	<template>
+		<p>
+			Question: {{question.question}}
+		</p>
+		<p>
+			Answers:
+			<paper-button-group selected="small">
+				<template is="dom-repeat" items="{{question.answers}}">
+					<paper-button data-index$="{{item}}" id="answer{{index}}" class$="{{_getColor(item)}}"
+								  on-tap="selectAnswer">{{item}}
+					</paper-button>
+				</template>
+			</paper-button-group>
+		</p>
+		<p>
+			Correct Answer: {{question.correctAnswer}}
+		</p>
+	</template>
+	<script>
+		window.addEventListener('WebComponentsReady', function (e) {
+			Polymer({
+				is: 'current-question',
+				ready: function () {
+					const self = this;
+					this.question = {question: "", answers: [], correctAnswer: 0};
+					nodecg.Replicant("currentQuestion").on('change', (newVal) => {
+						this.question = newVal;
+					})
+					nodecg.listenFor('resetQuestion', () => {
+						for (let i = 0; i < 4; i++) {
+							document.getElementById("answer" + i).classList.remove("green");
+						}
+						this.selectedAnswer = undefined;
+					})
+				},
+				selectAnswer: function (e) {
+					console.log(this.selectedAnswer);
+					if (this.selectedAnswer === e.target.dataset.index) {
+						this.selectedAnswer = undefined;
+						e.target.classList.remove("green");
+					} else {
+						this.selectedAnswer = e.target.dataset.index;
+						e.target.classList.add("green");
+						nodecg.sendMessage("selectedAnswer", this.selectedAnswer)
+					}
+				},
+				_getColor: function (index) {
+					return this.selectedAnswer && this.selectedAnswer === index ? "green" : "";
+				}
+			});
 		});
-	});
 	</script>
 </dom-module>
 <current-question></current-question>
-	<paper-button id="revealAnswer" class="nodecg-success" raised>Reveal Answer</paper-button>
-	<paper-button id="showQuestion" class="nodecg-success" raised>Show</paper-button>
-	<paper-button id="hideQuestion" class="nodecg-danger" raised>Hide</paper-button>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" src="text/javascript"></script>
+<paper-button id="revealAnswer" class="nodecg-success" raised>Reveal Answer</paper-button>
+<paper-button id="showQuestion" class="nodecg-success" raised>Show</paper-button>
+<paper-button id="hideQuestion" class="nodecg-danger" raised>Hide</paper-button>
+
+<paper-button id="nextQuestion" class="nodecg-danger" raised>Next Question</paper-button>
+<paper-button id="reset" class="nodecg-danger" raised>Reset</paper-button>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" type="text/javascript"></script>
 <script src="question.js"></script>
 </body>
 </html>
