@@ -38,6 +38,14 @@ $(function () {
 		}
 	})
 
+	nodecg.listenFor('soundTrack', (set) => {
+		if(set === 1){
+			nodecg.playSound("firstSet");
+		}else{
+			nodecg.playSound("secondSet");
+		}
+	})
+
 	nodecg.listenFor('buzz', (team) => {
 		if(team === "one"){
 			nodecg.playSound("teamOneBuzz");

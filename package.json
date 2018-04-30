@@ -102,6 +102,16 @@
         "assignable": false
       },
       {
+        "name": "firstSet",
+        "defaultFile": "sounds/firstSet.ogg",
+        "assignable": false
+      },
+      {
+        "name": "secondSet",
+        "defaultFile": "sounds/secondSet.ogg",
+        "assignable": false
+      },
+      {
         "name": "lockin",
         "defaultFile": "sounds/lockin.ogg",
         "assignable": false
