@@ -22,7 +22,10 @@
 
 	$('#nextQuestion').on('click', () => {
 		if(currentQuestion.value !== undefined) {
-			currentQuestion.value = questionPack.value.questions[currentQuestion.value.id + 1];
+console.log(questionPack.value.questions);
+console.log(questionPack.value.questions.indexOf(currentQuestion.value) + 1);
+//console.log(currentQuestion.value.id);
+			currentQuestion.value = questionPack.value.questions[currentQuestion.value.index + 1];
 			nodecg.sendMessage('resetQuestion');
 		}
 	});

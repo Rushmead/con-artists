@@ -99,7 +99,9 @@
 					})
 					nodecg.listenFor('resetQuestion', () => {
 						for (let i = 0; i < 4; i++) {
+if(document.getElementById("answer" + i)){
 							document.getElementById("answer" + i).classList.remove("green");
+}
 						}
 						this.selectedAnswer = undefined;
 					})

@@ -8,8 +8,8 @@ fs.readFile('questions.json', 'utf8', function(err, data){
     console.log(data.toString());
     var questions = JSON.parse(data.toString());
 	questions.questionPacks.map((questionPack, index) => {
-    	questionPack.questions.map((question, index) => {
-    		question.id = index;
+    	questionPack.questions = questionPack.questions.map((question, qindex) => {
+    		question['index'] = qindex;
     		return question;
 		});
 		questionPack.id = index;
