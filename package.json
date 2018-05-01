@@ -29,11 +29,20 @@
         "headerColor": "#9f9bbd"
       },
       {
+        "name": "scoreboard-1",
+        "title": "Scoreboard",
+        "width": 4,
+        "file": "scoreboard/scoreboard.html",
+        "headerColor": "#9f9bbd",
+        "workspace": "sounds"
+      },
+      {
         "name": "lower-third",
         "title": "Lower Third",
         "width": 4,
         "file": "lower_third.html",
-        "headerColor": "#9f9bbd"
+        "headerColor": "#9f9bbd",
+        "workspace": "Settings"
       },
       {
         "name": "questions",
@@ -50,12 +59,27 @@
         "headerColor": "#9f9bbd"
       },
       {
+        "name": "sounds",
+        "title": "Sounds",
+        "width": 2,
+        "file": "sounds/sounds.html",
+        "headerColor": "#9f9bbd",
+        "workspace": "sounds"
+      },
+      {
         "name": "settings",
         "title": "Settings",
         "width": 4,
         "file": "settings/settings.html",
         "headerColor": "#9f9bbd",
         "workspace": "Settings"
+      },
+      {
+        "name": "quickthirds",
+        "title": "Quick Thirds",
+        "width": 4,
+        "file": "quick-thirds/quick-thirds.html",
+        "headerColor": "#9f9bbd"
       }
     ],
     "graphics": [

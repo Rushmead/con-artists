@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+	<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+	<link rel="import" href="../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+	<link rel="import" href="../../bower_components/paper-listbox/paper-listbox.html">
+	<link rel="import" href="../../bower_components/paper-item/paper-item.html">
+	<script src="../../bower_components/webcomponentsjs/webcomponents-hi.js"></script>
+	<style>
+		.green {
+			background: green;
+		}
+		.orange {
+			background: orange;
+		}
+		.red {
+			background: red;
+		}
+
+		.space-me {
+			margin-bottom: 10px;
+		}
+	</style>
+</head>
+<body>
+	<paper-button id="playFirst" class="space-me" raised>Play First Set</paper-button>
+	<paper-button id="playSecond" class="space-me" raised>Play Second Set</paper-button>
+	<paper-button id="playCorrect" class="space-me green" raised>Correct</paper-button>
+	<paper-button id="playIncorrect" class="space-me orange" raised>Incorrect</paper-button>
+	<paper-button id="stopAll" class="space-me red" raised>STOP ALL SOUNDS</paper-button>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" type="text/javascript"></script>
+<script src="sounds.js"></script>
+</body>
+</html>

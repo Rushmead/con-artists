@@ -17,6 +17,9 @@
 		.grey {
 			background: grey;
 		}
+		.space-me {
+			margin-bottom: 10px;
+		}
 	</style>
 </head>
 <body>
@@ -78,7 +81,7 @@
 			<paper-button-group selected="small">
 				<template is="dom-repeat" items="{{question.answers}}">
 					<paper-button data-index$="{{item}}" id="answer{{index}}" class$="{{_getColor(item)}}"
-								  on-tap="selectAnswer">{{item}}
+								  on-tap="selectAnswer" raised>{{item}}
 					</paper-button>
 				</template>
 			</paper-button-group>
@@ -125,15 +128,14 @@ if(document.getElementById("answer" + i)){
 	</script>
 </dom-module>
 <current-question></current-question>
-<paper-button id="revealAnswer" class="nodecg-success" raised>Reveal Answer</paper-button>
-<paper-button id="showQuestion" class="nodecg-success" raised>Show</paper-button>
-<paper-button id="hideQuestion" class="nodecg-danger" raised>Hide</paper-button>
-
-<paper-button id="nextQuestion" class="nodecg-danger" raised>Next Question</paper-button>
-<paper-button id="reset" class="nodecg-danger" raised>Reset</paper-button>
-
-<paper-button id="playOne" raised>Play Music 1</paper-button>
-<paper-button id="playTwo" raised>Play Music 2</paper-button>
+<paper-button id="revealAnswer" class="space-me" raised>Reveal Answer</paper-button>
+<br/>
+<paper-button id="showQuestion" class="space-me" raised>Show</paper-button>
+<paper-button id="hideQuestion" class="space-me" raised>Hide</paper-button>
+<br/>
+<paper-button id="nextQuestion" class="space-me" raised>Next Question</paper-button>
+<br/>
+<paper-button id="reset" class="space-me" raised>Reset</paper-button>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" type="text/javascript"></script>
 <script src="question.js"></script>
 </body>

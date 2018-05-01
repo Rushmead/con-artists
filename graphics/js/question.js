@@ -38,6 +38,14 @@ $(function () {
 		}
 	})
 
+	nodecg.listenFor('playSound', (sound) => {
+		nodecg.playSound(sound);
+	})
+
+	nodecg.listenFor('stopALL', () => {
+		nodecg.stopAllSounds();
+	});
+
 	nodecg.listenFor('soundTrack', (set) => {
 		if(set === 1){
 			nodecg.playSound("firstSet");

@@ -43,10 +43,5 @@ console.log(questionPack.value.questions.indexOf(currentQuestion.value) + 1);
 		nodecg.sendMessage('revealAnswer');
 	})
 
-	$('#playOne').on('click', () => {
-		nodecg.sendMessage("soundTrack", 1);
-	});
-	$('#playTwo').on('click', () => {
-		nodecg.sendMessage("soundTrack", 2);
-	})
+	
 })()
