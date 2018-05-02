@@ -136,6 +136,11 @@
         "assignable": false
       },
       {
+        "name": "testSet",
+        "defaultFile": "sounds/testSet.ogg",
+        "assignable": false
+      },
+      {
         "name": "lockin",
         "defaultFile": "sounds/lockin.ogg",
         "assignable": false

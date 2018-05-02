@@ -15,4 +15,7 @@
 	$('#stopAll').on('click', () => {
     nodecg.sendMessage("stopALL");
 	});
+	$('#playTest').on('click', () => {
+		nodecg.sendMessage("playSound", "testSet")
+	})
 })();
