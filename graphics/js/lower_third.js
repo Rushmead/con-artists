@@ -7,10 +7,10 @@ $(function () {
 	const width = nodecg.Replicant('lowerThirdWidth', {defaultValue: 0});
 
 	nodecg.listenFor('updateLowerThird', () => {
-		$('.lower-third-bottom').text(lowerThirdBottom.value);
-		$('.lower-third-top').text(lowerThirdTop.value);
 		var amount = 1900 * (width.value / 100);
 		$('.lower-third-container').animate({width:amount}, {duration: 800});
+		$('.lower-third-bottom').text(lowerThirdBottom.value);
+		$('.lower-third-top').text(lowerThirdTop.value);
 	});
 
 
